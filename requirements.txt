@@ -1,0 +1,4 @@
+RPi.GPIO
+mysql-connector-python
+requests
+firebase-admin
