@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart Irrigation System</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Menambahkan font dan ikon -->
+  <script src="https://unpkg.com/@heroicons/v2.0.18/24/outline/index.js"></script>
+</head>
+<body class="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 min-h-screen font-sans">
+  <div class="max-w-2xl mx-auto py-10 px-4">
+    <h1 class="text-4xl font-extrabold mb-8 text-center bg-gradient-to-r from-cyan-400 to-emerald-400 bg-clip-text text-transparent drop-shadow-lg">
+      SMART IRRIGATION 
+    </h1>
+
+    <div class="bg-gradient-to-br from-gray-800 to-gray-900 border border-gray-700/50 rounded-3xl p-6 shadow-2xl shadow-cyan-900/20">
+      <!-- Tombol Utama -->
+      <div class="mb-6 group relative">
+        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-600 to-emerald-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition duration-500"></div>
+        <button id="siramBtn" class="w-full relative bg-gradient-to-br from-cyan-600 to-emerald-500 hover:from-cyan-500 hover:to-emerald-400 text-white font-bold py-3 px-6 rounded-2xl transition-all duration-300 hover:scale-[1.02] shadow-lg shadow-cyan-700/30">
+          <span class="drop-shadow-sm">🚿 SIRAM SEKARANG</span>
+        </button>
+      </div>
+
+      <!-- Form Jadwal -->
+      <div class="mb-8 space-y-4">
+        <div class="flex items-center gap-2 text-cyan-300">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+          </svg>
+          <label for="jadwal" class="block text-lg font-semibold">Jadwal Otomatis</label>
+        </div>
+        
+        <div class="flex gap-4">
+          <input type="time" id="jadwal" class="w-full bg-gray-700/50 border border-gray-600 text-white px-4 py-3 rounded-xl focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+          <button id="aturWaktuBtn" class="px-6 bg-gradient-to-br from-blue-600 to-cyan-500 hover:from-blue-500 hover:to-cyan-400 text-white font-bold rounded-xl transition-all duration-300 hover:scale-[1.02] flex items-center gap-2 shadow-lg shadow-blue-700/30">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Status Sensor -->
+      <div class="mt-8 space-y-4">
+        <h2 class="text-xl font-bold text-cyan-300 flex items-center gap-2">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+          </svg>
+          STATUS SENSOR REAL-TIME
+        </h2>
+        
+        <div id="sensorData" class="bg-gray-800/60 border border-gray-700/50 rounded-xl p-5 grid grid-cols-2 gap-4 backdrop-blur-sm">
+          <div class="flex items-center gap-3">
+            <div class="p-2 bg-gradient-to-br from-cyan-600 to-cyan-700 rounded-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-cyan-300">Suhu</p>
+              <p class="text-2xl font-bold"><span id="temp">--</span>°C</p>
+            </div>
+          </div>
+          
+          <div class="flex items-center gap-3">
+            <div class="p-2 bg-gradient-to-br from-emerald-600 to-emerald-700 rounded-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-emerald-300">Kelembaban</p>
+              <p class="text-2xl font-bold"><span id="hum">--</span>%</p>
+            </div>
+          </div>
+          
+          <div class="col-span-2 flex items-center gap-3">
+            <div class="p-2 bg-gradient-to-br from-amber-600 to-amber-700 rounded-lg">
+              <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm text-amber-300">Kelembaban Tanah</p>
+              <p class="text-2xl font-bold"><span id="soil">--</span></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="text-sm text-center text-gray-400 mt-8 hover:text-cyan-400 transition-colors">
+      UX/UI Design by 
+      <a href="https://saweria.co/ijajkeyboard" class="underline font-medium hover:text-cyan-300">
+        ijajkeyboard
+      </a>
+    </p>
+  </div>
+
+  <script>
+    // Tambahkan animasi saat data sensor update
+    function animateValue(element) {
+      element.style.transform = 'scale(1.1)';
+      element.style.color = '#22d3ee';
+      setTimeout(() => {
+        element.style.transform = 'scale(1)';
+        element.style.color = 'white';
+      }, 300);
+    }
+
+    async function fetchSensorData() {
+      const res = await fetch('/api/sensor');
+      const data = await res.json();
+      
+      ['temp', 'hum', 'soil'].forEach(id => {
+        const element = document.getElementById(id);
+        if (element.textContent !== data[id]) {
+          animateValue(element);
+          element.textContent = data[id];
+        }
+      });
+    }
+
+  </script>
+</body>
+</html>
