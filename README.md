@@ -88,6 +88,9 @@ docker-compose up -d
 ## **🔗 3. Struktur Proyek**
 ```
 smart_irrigation_system/
+app.py
+templates/
+| index.html
 │── sensors/
 │   ├── read_sensors.py    # Membaca data dari sensor
 │   ├── save_to_db.py      # Menyimpan data ke MySQL/Firebase
